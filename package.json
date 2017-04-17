@@ -20,7 +20,8 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongoose":"^4.9.4",
-    "mongoose-auto-increment":"^5.0.1"
+    "mongoose-auto-increment":"^5.0.1",
+    "express-session":"^1.15.2"
   },
   "devDependencies": {},
   "repository": {
