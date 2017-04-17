@@ -20,5 +20,13 @@
     "express": "^4.15.2"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmaddp1995/voting-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nmaddp1995/voting-app/issues"
+  },
+  "homepage": "https://github.com/nmaddp1995/voting-app#readme",
   "description": ""
 }
