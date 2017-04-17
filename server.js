@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var app = express(app);
 var passport = require('passport');
 var Strategy = require('passport-twitter').Strategy;
-var port = 8080 ||process.env.PORT ;
+var port = process.env.PORT || 8080;
 
 var MongoClient = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
