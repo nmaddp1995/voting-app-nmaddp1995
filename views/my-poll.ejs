@@ -25,7 +25,7 @@
 
     </div>
     <div class="text-center">
-    <div id="list-poll" class="text-center">
+    <div id="list-poll" class="text-center" style="margin:15px 200px">
       <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
@@ -33,10 +33,15 @@
         
         $.get("/getMyPolls", function(data) {
         for(var i = 0; i < data.polls.length; i++){
-              var html = '<div class="row" class="single-poll">';
+              var html = '<div class="row text-center" class="single-poll" >';
+              html +='<div class="col-md-2"></div>'
+              html +='<div class="col-md-8">';
               html += '<a href="/singlePoll?id=' + data.polls[i]._id + '">';
+              html += '<button style="margin: 5px; width:100% ">'
               html += data.polls[i].pollName;
+              html += '</button>'
               html += '</a>';
+              html += '</div>';
               html += '</div>';
               $('#list-poll').append(html);
             }
