@@ -20,28 +20,19 @@
     <% include ../views/header.ejs %>
 
       <script type="text/javascript">
-        //   google.charts.load('current', {'packages':['corechart']});
-        // google.charts.setOnLoadCallback(drawChart);
         var optionForChoose=[ ['Option Name', 'Vote'],];
         var title ;
         var pollID = getQueryVariable("id");
-
         $.get("/getSinglePoll?id="+pollID, function(data) {
-          
-         if(data.poll[1]!=undefined){
-            
+          if(data.poll[1]!=undefined){
             if (data.poll[1].userId==data.poll[0].userId) {
-             
               var e = document.getElementById("btn-remove");
               e.style.display="block";
             }
-          
           }
-
           var options = data.poll[0].options;
           title = data.poll[0].pollName;
           console.log(options);
-
           for(var i =0;i<options.length;i++){
             optionForChoose.push([options[i].optionName,options[i].optionVote]);
           }
@@ -60,8 +51,6 @@
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, title);
           }
-          
-          
           var select = document.getElementById('select-option');
           for(var i=0;i<options.length;i++){
             var opt = document.createElement('option');
@@ -70,14 +59,10 @@
             select.appendChild(opt);
           }
           var opt = document.createElement('option');
-            opt.value = "Create new option";
-            opt.innerHTML = "Create new option";
-            select.appendChild(opt);
-          
-          
+          opt.value = "Create new option";
+          opt.innerHTML = "Create new option";
+          select.appendChild(opt);
         });
-
-
         function getQueryVariable(variable) {
           var query = window.location.search.substring(1);
           var vars = query.split("&");
@@ -90,80 +75,53 @@
           }
           return (false);
         }
-$(document).ready(function(){
-  var newOption = document.getElementById("div-new-option");
-   $('#select-option').change(function () {
-     
-      if ($(this).val() === 'Create new option') {
-     newOption.style.display="block";
-} else {
-  newOption.style.display="none";
-}
-  });
-   
-});
+        $(document).ready(function(){
+          var newOption = document.getElementById("div-new-option");
+          $('#select-option').change(function () {
 
- 
-  
-//   alert("123");
-//   var select = document.getElementById("select-option");
-//   var newOption = document.getElementById("div-new-option");
-// var str = select.options[select.selectedIndex].text;
-// console.log(str);
-// if(str=="Create new option") {
-  
-//   newOption.style.display="block";
-// } else {
-//   newOption.style.display="none";
-// }
-// }
+            if ($(this).val() === 'Create new option') {
+              newOption.style.display="block";
+            } else {
+              newOption.style.display="none";
+            }
+          });
 
-
+        });
 
       </script>
       <div class="row" style="float:left">
         <div class="vote" style="margin-top: 80px; margin-left: 50px;">
           <div >
             <form action="/vote" method="get">
-            <select id="select-option" name="select" onChange="select">
-              
-             
-            </select>
-            <div class="new-option" style="display:none" id="div-new-option">
-              Your option : 
-              <input class="form-control" name="select2">
+              <select id="select-option" name="select" onChange="select">
 
+
+              </select>
+              <div class="new-option" style="display:none" id="div-new-option">
+                Your option : 
+                <input class="form-control" name="select2">
+
+              </div>
+              </div>
+
+            <div id="div-button-submit" style="margin-top:10px;">
+              <button class="btn btn-primary" id="btn-submit"> Submit</button>
             </div>
-          </div>
-          
-            
-          
-          <div id="div-button-submit" style="margin-top:10px;">
-            <button class="btn btn-primary" id="btn-submit"> Submit</button>
-          </div>
-          </form>
+            </form>
           <div style="margin-top:10px;" >
-
-
             <a href="https://twitter.com/share" target="_blank" >
               <button id="button-tweet" class="btn btn-info" target="_blank" onload="myFunction();"> Share on twitter
-
               </button>
             </a>
           </div>
           <form action="/remove" method="get">
-          <div id="delete" style="margin-top: 90px;">
-            <button class="btn btn-danger" id="btn-remove" style="display:none" >Remove</button>
-          </div>
+            <div id="delete" style="margin-top: 90px;">
+              <button class="btn btn-danger" id="btn-remove" style="display:none" >Remove</button>
+            </div>
           </form>
         </div>
-
-
 
         <div id="piechart" style="width: 900px; height: 500px; float:right; margin : 30px;"></div>
 
       </div>
-
-
-
       </body>
