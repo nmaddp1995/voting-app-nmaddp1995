@@ -18,17 +18,24 @@
         <div id="createPoll" style="width: 80%; ">
           <h1 class="text-center" style ="margin : 20px;"> Create a New Poll </h1> 
           <form action ="/createPoll" method="get" >
-            <div  class="row" >
+            
 
-              <div class="col-md-1" style="margin-left:20px;">Title</div>
-              <div class="col-md-10">
-                <input class="form-control " style ="width: 600px; height:80%" id="title" name="title">
-              </div>
-            </div>
+            
 
-            <div  style="margin-left:20px; align:left; margin-top:10px;" >Options (seperated by ; ) : </div>
+<div  style="margin-left:80px;">Title: </div>
 
-            <input class="form-control " style ="width: 600px;margin:10px 80px; " id="options" name="options">
+<input class="form-control " style ="width: 600px; height:80% ;margin:10px 80px;" id="title" name="title">
+
+
+
+<div  style="margin-left:80px;">Options (seperated by line):</div>
+
+
+
+<textarea class="form-control" rows="4"  style ="width: 600px;margin:10px 80px; " id="options" name="options"></textarea>
+
+</div>
+
 
 
             </div>

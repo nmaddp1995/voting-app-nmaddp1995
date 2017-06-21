@@ -22,6 +22,7 @@ passport.use(new Strategy({
   consumerKey: "Ik0XJT3zd2E37qI6GXm1ZrMIE",
   consumerSecret: "WDK2oUs2GSgsmEBX7gwOlxOG9H3dPHQPDMp0aPxPpd2szBovx2",
   callbackURL: 'https://voting-app-nmaddp.herokuapp.com/login/twitter/return'
+  // callbackURL: 'https://dynamic-web-nmaddp1995.c9users.io/login/twitter/return'
 },
                           function(token, tokenSecret, profile, cb) {
   // In this example, the user's Twitter profile is supplied as the user
@@ -114,7 +115,11 @@ app.listen(port,function(){
 
 app.get('/createPoll',function(req,res){
   var name =  req.query.title ;
-  var options = req.query.options.split(";");
+  
+  var options = req.query.options.split(/[\r\n]+/) ;
+  var length = options.length;
+  if(options[length-1]=="") options.splice(length-1,1);
+  
   var optionAndVote = [];
   for(var i=0;i<options.length;i++){
     var tmp = {
@@ -154,7 +159,7 @@ app.get('/getPolls', function(req, res){
 
 app.get('/vote',function(req,res){
   var pollId= req.headers.referer.split('=')[1];
-  console.log(pollId);
+ 
   var check ;// check optin is new or old
   if(req.query.select!=='Create new option'){
     var vote = req.query.select;
