@@ -13,7 +13,7 @@ var poll = require("./models/poll");
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myDatabase');
 mongoose.Promise = global.Promise;
-poll.remove({}, function(){}); 
+// poll.remove({}, function(){});  // remove all poll
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
